@@ -1,32 +1,15 @@
 import { Component } from '@angular/core';
 import { Book } from './shared/book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bm-root',
-  template: `
-    <bm-book-list *ngIf="listOn" (showDetailsEvent)="showDetails($event)"></bm-book-list>
-    <bm-book-details *ngIf="detailsOn" [book] ="book" (showListEvent)="showList()"></bm-book-details>
-  `
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
-  listOn = true;
-  detailsOn = false;
-
   book: Book;
 
+constructor(private router: Router) {}
+
   title = 'BookMonkey';
-
-  showList() {
-    console.log('showList');
-    this.book = undefined;
-    this.listOn = true;
-    this.detailsOn = false;
-  }
-
-  showDetails(book: Book) {
-    console.log('showDetails');
-    this.book = book;
-    this.listOn = false;
-    this.detailsOn = true;
-  }
 }
