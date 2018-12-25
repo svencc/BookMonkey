@@ -1,22 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'bm-home',
   template: `
-    <p>Das ist der BookMonkey</p>
-    <button class="ui red button" [routerLink]="[ '../books']">Buchliste ansehen <i class="arrow right icon"></i></button>
+<div class="ui container two column grid">
 
-  `,
+  <div class="ui container column">
+    <h1>Home</h1>
+    <p>Das ist der BookMonkey.</p>
+    <a routerLink="../books" class="ui red button">
+      Buchliste ansehen
+      <i class="right arrow icon"></i>
+    </a>
+  </div>
+
+  <bm-search (bookSelected)="bookSelected($event)" class="column"></bm-search>
+</div>
+`,
   styles: []
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor() {
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  }
-
-  ngOnInit() {
-
+  bookSelected(book: Book) {
+    this.router.navigate(['../books', book.isbn], {relativeTo: this.route});
   }
 
 }
