@@ -60,6 +60,14 @@ export class BookStoreService {
       );
   }
 
+  check(isbn: string): Observable<Boolean> {
+    return this.http
+      .get(`${this.api}/book/${isbn}/check`)
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
   create(book: Book): Observable<any> {
     return this.http
       .post(`${this.api}/book`, book, { responseType: 'text' })
