@@ -39,4 +39,7 @@
 </div>
 
 <button [routerLink]="['/books']" class="ui red button"><i class="arrow left icon"></i> Zurück zur Buchliste</button>
+<a class="ui tiny yellow labeled icon button" [routerLink]="['../../admin', book?.isbn]" routerLinkActive="router-link-active">
+  <i class="write icon"></i> Buch bearbeiten
+</a>
 <button class="ui red button" (click)="removeBook()"><i class="trash alternate icon"></i> Buch entfernen</button>

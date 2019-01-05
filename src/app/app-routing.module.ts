@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'books' , component: BookListComponent},
   {path: 'books/:isbn' , component: BookDetailsComponent},
   {path: 'admin' , component: BookFormComponent},
+  {path: 'admin/:isbn' , component: BookFormComponent},
 ];
 
 @NgModule({
